@@ -1,63 +1,139 @@
-SynthLink Technologies - Official Website
-A modern, responsive, and visually robust static website for SynthLink Technologies, a Nairobi-based ICT company. The site features context-aware animations, a DataCamp-inspired split layout, and a clean, professional design using Tailwind CSS.
+# SynthLink Technologies — Official Website
 
-Project StatusLicense
+> **Connecting Systems. Empowering People. Building the Future.**
 
-📂 Project Structure
-SynthLinkSite/├── index.html          # Homepage (Network Animation)├── about.html          # About Us (Data Growth Animation)├── services.html       # Services (Radar Scan Animation)├── contact.html        # Contact (Signal Pulse Animation)├── components.js       # Shared Header & Footer Logic└── README.md           # This file
-✨ Features
-Robust Design: Modern "Glassmorphism" effects, glowing gradients, and crisp typography.
-Context-Aware Animations: Each page features a unique background animation relevant to its content:
-Home: Node connectivity network.
-About: Rising data bars (growth/vision).
-Services: Scanning radar (monitoring/discovery).
-Contact: Pulsing signal (communication).
-Modular Components: Header and Footer are injected via JavaScript (components.js), ensuring uniformity across all pages.
-Responsive: Fully mobile-optimized with a collapsible navigation menu.
-Tech Stack: HTML5, Tailwind CSS (via CDN), Vanilla JavaScript, Alpine.js (optional).
-🚀 Getting Started (Local Run)
-To view this website on your computer:
+A modern, responsive, and visually robust static website for **SynthLink Technologies**, a Nairobi-based ICT company. The site features context-aware animations, a clean glassmorphism aesthetic, and a modular component architecture.
 
-Create a folder named SynthLinkSite on your desktop.
-Inside that folder, create the following 5 files:
-index.html
-about.html
-services.html
-contact.html
-components.js
-Paste the code:
-Copy the HTML code provided into the .html files.
-Copy the JavaScript code provided into components.js.
-Open the site:
-Double-click index.html. It will open in your default web browser.
-⚠️ Important: The Header and Footer will not appear if components.js is missing or placed in a different folder.
+![Status](https://img.shields.io/badge/status-active-2EF2A4?style=flat-square) ![License](https://img.shields.io/badge/license-open--source-blue?style=flat-square) ![Built With](https://img.shields.io/badge/built%20with-HTML%20%7C%20Tailwind%20CSS%20%7C%20JavaScript-0E2A47?style=flat-square)
 
-🌐 Deployment (Live Website)
-The easiest way to deploy this site for free is using Netlify Drop.
+---
 
-Go to app.netlify.com/drop.
-Drag and drop your SynthLinkSite folder into the upload area.
-Wait a few seconds for the upload to complete.
-Netlify will generate a live URL (e.g., silly-jones-12345.netlify.app).
-🛠️ Customization
-Changing Links
-Open components.js. All social media links (WhatsApp, LinkedIn, X) and navigation links are located at the top of the file within the headerHTML and footerHTML variables.
+## 📂 Project Structure
 
-Changing Colors
-The color scheme is defined using Tailwind CSS inside the <head> of each HTML file under tailwind.config.
+```
+SynthLinkSite/
+├── index.html        # Homepage        — Node Connectivity Animation
+├── about.html        # About Us        — Data Growth Animation
+├── services.html     # Services        — Radar Scan Animation
+├── contact.html      # Contact         — Signal Pulse Animation
+├── components.js     # Shared Header & Footer (injected via JS)
+└── README.md         # Project documentation
+```
 
-brand.dark: Deep Navy (#05192D)
-brand.light: Lighter Navy (#0E2A47)
-brand.accent: Tech Green (#2EF2A4)
-To change the accent color, update the hex codes in the tailwind.config script in every HTML file.
+---
 
-Updating Content
-Simply edit the text inside the HTML files (e.g., changing the phone number in contact.html or the mission statement in about.html).
+## ✨ Features
 
-📱 Pages Overview
-Home: Hero section with a "Start Your Transformation" form.
-About: Mission, Vision, and "Why Choose Us" value propositions.
-Services: Detailed breakdown of Network Infrastructure, IT Support, Software Dev, and Training.
-Contact: Contact form, office location, and direct social media links.
-📄 License
-This project is open source and available for use.
+- **Glassmorphism Design** — Glowing gradients, frosted glass effects, and crisp typography for a premium feel.
+- **Context-Aware Animations** — Each page has a unique background animation relevant to its content:
+
+  | Page     | Animation               | Theme                    |
+  |----------|-------------------------|--------------------------|
+  | Home     | Node connectivity network | Networking & connectivity |
+  | About    | Rising data bars          | Growth & vision           |
+  | Services | Scanning radar            | Monitoring & discovery    |
+  | Contact  | Pulsing signal            | Communication             |
+
+- **Modular Components** — Header and Footer are injected via `components.js`, ensuring consistency across all pages with zero duplication.
+- **Fully Responsive** — Mobile-optimized with a collapsible navigation menu for all screen sizes.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Usage |
+|---|---|
+| HTML5 | Page structure and content |
+| Tailwind CSS (CDN) | Styling and layout |
+| Vanilla JavaScript | Animations and component injection |
+| Alpine.js *(optional)* | Reactive UI interactions |
+
+---
+
+## 🚀 Getting Started
+
+### Run Locally
+
+1. **Create a project folder** named `SynthLinkSite` on your desktop.
+
+2. **Create the following files** inside that folder:
+   ```
+   index.html
+   about.html
+   services.html
+   contact.html
+   components.js
+   ```
+
+3. **Paste the code** — Copy each file's HTML/JS content into its corresponding file.
+
+4. **Open the site** — Double-click `index.html` to launch it in your browser.
+
+> ⚠️ **Important:** The Header and Footer will **not appear** if `components.js` is missing or placed in a different folder. Always keep all files in the same directory.
+
+---
+
+## 🌐 Deployment
+
+The easiest way to get this site live for free is via **Netlify Drop** — no account required.
+
+1. Go to [app.netlify.com/drop](https://app.netlify.com/drop)
+2. Drag and drop your entire `SynthLinkSite` folder into the upload area
+3. Wait a few seconds for the upload to complete
+4. Netlify will generate a live URL (e.g., `synthlink-xyz123.netlify.app`)
+
+---
+
+## 🎨 Customization
+
+### Changing Navigation & Social Links
+Open `components.js`. All navigation links and social media URLs (WhatsApp, LinkedIn, X) are defined at the top of the file inside the `headerHTML` and `footerHTML` variables.
+
+### Changing the Color Scheme
+Colors are configured in the `tailwind.config` script block inside the `<head>` of each HTML file:
+
+```javascript
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          dark:   '#05192D',  // Deep Navy (background)
+          light:  '#0E2A47',  // Lighter Navy (cards/panels)
+          accent: '#2EF2A4',  // Tech Green (highlights & CTAs)
+        }
+      }
+    }
+  }
+}
+```
+
+> To change the accent color, update the hex value for `accent` in **every HTML file**.
+
+### Updating Page Content
+Edit text directly in the HTML files:
+- Phone number → `contact.html`
+- Mission & Vision statements → `about.html`
+- Service descriptions → `services.html`
+- Hero headline & CTA → `index.html`
+
+---
+
+## 📱 Pages Overview
+
+| Page | File | Key Sections |
+|---|---|---|
+| **Home** | `index.html` | Hero section with "Start Your Transformation" form |
+| **About** | `about.html` | Mission, Vision, and "Why Choose Us" value propositions |
+| **Services** | `services.html` | Network Infrastructure, IT Support, Software Dev, Training |
+| **Contact** | `contact.html` | Contact form, office location, and social media links |
+
+---
+
+## 📄 License
+
+This project is open source and free to use, modify, and distribute.
+
+---
+
+*Built with ❤️ by Tito Kilonzo — SynthLink Technologies, Nairobi, Kenya*
