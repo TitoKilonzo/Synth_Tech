@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SynthLink</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>tailwind.config = { theme: { extend: { colors: { brand: { dark: '#05192D', light: '#0E2A47', accent: '#2EF2A4', } } } } }</script>
+    <style>
+        .growth-container { position: absolute; inset: 0; overflow: hidden; opacity: 0.15; z-index: 0; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: 0; }
+        .bar { width: 3%; background: linear-gradient(to top, #0E2A47, #2EF2A4); border-top: 1px solid #2EF2A4; animation: grow 3s ease-in-out infinite alternate; }
+        @keyframes grow { 0% { height: 10%; opacity: 0.3; } 100% { height: 80%; opacity: 0.6; } }
+        .card-hover { transition: all 0.3s ease; border: 1px solid transparent; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border-color: #2EF2A4; }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+    
+    <div id="header"></div>
+
+    <!-- Modern Header -->
+    <div class="bg-brand-dark text-white py-24 relative overflow-hidden pt-32">
+        <div class="absolute inset-0 bg-grid opacity-20"></div>
+        <div class="growth-container" id="growthBars"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-4 block">Who We Are</span>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight">Bridging the Digital <br><span class="text-brand-accent">Divide</span></h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">Bridging the digital divide with reliable, scalable, and innovative ICT solutions.</p>
+        </div>
+    </div>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        
+        <!-- Mission & Vision -->
+        <div class="grid md:grid-cols-2 gap-8 mb-20">
+            <div class="card-hover bg-gray-50 p-10 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-brand-accent/10 rounded-bl-full transition-transform group-hover:scale-110"></div>
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-brand-dark rounded-xl flex items-center justify-center text-brand-accent text-2xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-brand-dark mb-4">Our Mission</h2>
+                    <p class="text-gray-600 leading-relaxed">To bridge the digital divide by providing reliable, scalable, and innovative ICT solutions that empower organizations to thrive in a connected world.</p>
+                </div>
+            </div>
+            <div class="card-hover bg-gray-50 p-10 rounded-2xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-brand-accent/10 rounded-bl-full transition-transform group-hover:scale-110"></div>
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-brand-dark rounded-xl flex items-center justify-center text-brand-accent text-2xl mb-6 shadow-lg">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-brand-dark mb-4">Our Vision</h2>
+                    <p class="text-gray-600 leading-relaxed">To be East Africa's most trusted technology partner for infrastructure, connectivity, and digital transformation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Us -->
+        <div class="mb-20">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-brand-dark mb-4">Why Choose SynthLink?</h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group text-center">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand-accent mx-auto mb-6 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
+                        <i class="fa-solid fa-user-gear text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Practitioner Led</h3>
+                    <p class="text-gray-500 text-sm">Founded by an expert with hands-on experience in networking, software, and cybersecurity.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group text-center">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand-accent mx-auto mb-6 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
+                        <i class="fa-solid fa-code-branch text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">End-to-End Service</h3>
+                    <p class="text-gray-500 text-sm">From physical cabling and infrastructure to software code and cloud solutions.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group text-center">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center text-brand-accent mx-auto mb-6 group-hover:bg-brand-accent group-hover:text-brand-dark transition-colors duration-300">
+                        <i class="fa-solid fa-award text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Enterprise Quality</h3>
+                    <p class="text-gray-500 text-sm">Locally grounded in Nairobi but delivering global standard quality.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <div id="footer"></div>
+    
+    <script>
+        const container = document.getElementById('growthBars'); if(container) { for (let i = 0; i < 20; i++) { const bar = document.createElement('div'); bar.className = 'bar'; bar.style.height = `${Math.floor(Math.random() * 50) + 20}%`; bar.style.animationDuration = `${Math.random() * 2 + 2}s`; bar.style.animationDelay = `${Math.random() * 2}s`; container.appendChild(bar); } }
+    </script>
+    <script src="components.js"></script>
+</body>
+</html>
