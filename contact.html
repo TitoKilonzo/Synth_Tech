@@ -143,23 +143,13 @@
                     <p class="text-gray-600 mb-6">Latest developments in artificial intelligence and machine learning</p>
                     
                     <!-- Auto-updated AI News Feed -->
-                    <div class="space-y-4">
+                    <div id="ai-articles" class="space-y-4">
                         <div class="border-l-4 border-brand-accent pl-4 py-2">
-                            <h4 class="font-bold text-brand-dark">GPT-5 Breakthrough</h4>
-                            <p class="text-sm text-gray-500">New multimodal capabilities announced</p>
-                            <a href="https://openai.com/blog" class="text-brand-accent hover:underline text-sm">Read more →</a>
-                        </div>
-                        <div class="border-l-4 border-brand-accent pl-4 py-2">
-                            <h4 class="font-bold text-brand-dark">Quantum AI Progress</h4>
-                            <p class="text-sm text-gray-500">IBM achieves quantum supremacy milestone</p>
-                            <a href="https://ibm.com/quantum" class="text-brand-accent hover:underline text-sm">Read more →</a>
-                        </div>
-                        <div class="border-l-4 border-brand-accent pl-4 py-2">
-                            <h4 class="font-bold text-brand-dark">AI Ethics Framework</h4>
-                            <p class="text-sm text-gray-500">New global standards for responsible AI</p>
-                            <a href="https://aiethics.org" class="text-brand-accent hover:underline text-sm">Read more →</a>
+                            <h4 class="font-bold text-brand-dark">Loading latest AI news...</h4>
+                            <p class="text-sm text-gray-500">Fetching updates...</p>
                         </div>
                     </div>
+                    <div class="mt-4 text-xs text-gray-400" id="last-updated">Last updated: Loading...</div>
                 </div>
 
                 <!-- Tech Videos -->
@@ -173,7 +163,7 @@
                     <p class="text-gray-600 mb-6">Animated insights into cutting-edge technology</p>
                     
                     <!-- Embedded Tech Video -->
-                    <div class="aspect-video bg-gray-200 rounded-xl overflow-hidden mb-4">
+                    <div class="aspect-video bg-gray-200 rounded-xl overflow-hidden mb-4" id="tech-video">
                         <iframe 
                             src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
                             title="Latest Tech Innovations" 
@@ -181,8 +171,8 @@
                             allowfullscreen>
                         </iframe>
                     </div>
-                    <h4 class="font-bold text-brand-dark mb-2">The Future of Computing</h4>
-                    <p class="text-sm text-gray-500 mb-3">Exploring quantum computing and neuromorphic chips</p>
+                    <h4 id="video-title" class="font-bold text-brand-dark mb-2">The Future of Computing</h4>
+                    <p id="video-description" class="text-sm text-gray-500 mb-3">Exploring quantum computing and neuromorphic chips</p>
                     <a href="https://youtube.com/techchannel" class="text-brand-accent hover:underline">Watch more videos →</a>
                 </div>
 
@@ -196,23 +186,13 @@
                     </div>
                     <p class="text-gray-600 mb-6">In-depth analysis and industry insights</p>
                     
-                    <div class="space-y-4">
+                    <div id="tech-articles-list" class="space-y-4">
                         <div class="group">
                             <div class="w-full h-32 bg-gradient-to-r from-brand-dark to-brand-light rounded-xl mb-3 flex items-center justify-center text-white font-bold text-lg group-hover:scale-105 transition-transform">
                                 <i class="fa-solid fa-microchip text-3xl"></i>
                             </div>
-                            <h4 class="font-bold text-brand-dark mb-2">5G Networks Revolution</h4>
-                            <p class="text-sm text-gray-500 mb-3">How 5G is transforming connectivity and IoT</p>
-                            <a href="https://techcrunch.com/5g-networks" class="text-brand-accent hover:underline">Read article →</a>
-                        </div>
-                        
-                        <div class="group">
-                            <div class="w-full h-32 bg-gradient-to-r from-brand-accent to-green-400 rounded-xl mb-3 flex items-center justify-center text-brand-dark font-bold text-lg group-hover:scale-105 transition-transform">
-                                <i class="fa-solid fa-robot text-3xl"></i>
-                            </div>
-                            <h4 class="font-bold text-brand-dark mb-2">Autonomous Systems</h4>
-                            <p class="text-sm text-gray-500 mb-3">The rise of autonomous vehicles and drones</p>
-                            <a href="https://wired.com/autonomous" class="text-brand-accent hover:underline">Read article →</a>
+                            <h4 class="font-bold text-brand-dark mb-2">Loading articles...</h4>
+                            <p class="text-sm text-gray-500 mb-3">Fetching latest tech insights</p>
                         </div>
                     </div>
                 </div>
@@ -231,5 +211,215 @@
     
     <div id="footer"></div>
     <script src="components.js"></script>
+    
+    <!-- Tech Insights Auto-Update Script -->
+    <script>
+        // Auto-update tech insights every hour
+        class TechInsightsManager {
+            constructor() {
+                this.updateInterval = 60 * 60 * 1000; // 1 hour in milliseconds
+                this.lastUpdateKey = 'techInsightsLastUpdate';
+                this.cacheKey = 'techInsightsData';
+                this.init();
+            }
+
+            init() {
+                this.checkForUpdates();
+                // Set up hourly updates
+                setInterval(() => this.checkForUpdates(), this.updateInterval);
+            }
+
+            checkForUpdates() {
+                const lastUpdate = localStorage.getItem(this.lastUpdateKey);
+                const now = Date.now();
+                
+                if (!lastUpdate || (now - parseInt(lastUpdate)) > this.updateInterval) {
+                    this.fetchLatestInsights();
+                } else {
+                    this.loadFromCache();
+                }
+            }
+
+            async fetchLatestInsights() {
+                try {
+                    // Fetch AI/ML news from multiple sources
+                    const sources = [
+                        'https://api.rss2json.com/v1/api.json?rss_url=https%3A//feeds.feedburner.com/TechCrunch/AI',
+                        'https://api.rss2json.com/v1/api.json?rss_url=https%3A//www.technologyreview.com/topnews.rss',
+                        'https://api.rss2json.com/v1/api.json?rss_url=https%3A//rss.cnn.com/rss/edition_technology.rss'
+                    ];
+
+                    const responses = await Promise.allSettled(
+                        sources.map(url => fetch(url).then(r => r.json()))
+                    );
+
+                    const allArticles = [];
+                    
+                    responses.forEach(response => {
+                        if (response.status === 'fulfilled' && response.value.items) {
+                            allArticles.push(...response.value.items.slice(0, 3));
+                        }
+                    });
+
+                    // Filter and sort AI/tech articles
+                    const aiArticles = allArticles
+                        .filter(article => 
+                            article.title.toLowerCase().includes('ai') || 
+                            article.title.toLowerCase().includes('artificial intelligence') ||
+                            article.title.toLowerCase().includes('machine learning') ||
+                            article.title.toLowerCase().includes('neural') ||
+                            article.title.toLowerCase().includes('quantum')
+                        )
+                        .slice(0, 3);
+
+                    // Fetch tech videos (YouTube API simulation)
+                    const techVideos = await this.fetchTechVideos();
+                    
+                    // Fetch tech articles
+                    const techArticles = await this.fetchTechArticles();
+
+                    const data = {
+                        aiArticles,
+                        techVideos,
+                        techArticles,
+                        timestamp: Date.now()
+                    };
+
+                    localStorage.setItem(this.cacheKey, JSON.stringify(data));
+                    localStorage.setItem(this.lastUpdateKey, Date.now().toString());
+                    
+                    this.updateUI(data);
+                    
+                } catch (error) {
+                    console.log('Using cached data due to fetch error:', error);
+                    this.loadFromCache();
+                }
+            }
+
+            async fetchTechVideos() {
+                // Simulate fetching latest tech videos
+                return [
+                    {
+                        title: 'Latest in Quantum Computing',
+                        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                        description: 'Breakthroughs in quantum technology'
+                    },
+                    {
+                        title: 'AI Revolution 2026',
+                        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                        description: 'How AI is transforming industries'
+                    }
+                ];
+            }
+
+            async fetchTechArticles() {
+                // Simulate fetching latest tech articles
+                return [
+                    {
+                        title: 'Next-Gen 6G Networks',
+                        description: 'The future of wireless connectivity',
+                        url: 'https://techcrunch.com/6g-networks',
+                        image: 'fa-microchip'
+                    },
+                    {
+                        title: 'Sustainable Tech Solutions',
+                        description: 'Green technology innovations',
+                        url: 'https://wired.com/sustainable-tech',
+                        image: 'fa-leaf'
+                    },
+                    {
+                        title: 'Cybersecurity in 2026',
+                        description: 'Protecting digital assets',
+                        url: 'https://darkreading.com/cybersecurity',
+                        image: 'fa-shield-alt'
+                    }
+                ];
+            }
+
+            loadFromCache() {
+                const cached = localStorage.getItem(this.cacheKey);
+                if (cached) {
+                    const data = JSON.parse(cached);
+                    this.updateUI(data);
+                }
+            }
+
+            updateUI(data) {
+                if (data.aiArticles && data.aiArticles.length > 0) {
+                    this.updateAISection(data.aiArticles);
+                }
+                if (data.techVideos && data.techVideos.length > 0) {
+                    this.updateVideoSection(data.techVideos[0]);
+                }
+                if (data.techArticles && data.techArticles.length > 0) {
+                    this.updateArticlesSection(data.techArticles);
+                }
+                
+                // Update last updated timestamp
+                const lastUpdated = new Date(data.timestamp);
+                const timeString = lastUpdated.toLocaleTimeString();
+                const dateString = lastUpdated.toLocaleDateString();
+                
+                const updateIndicator = document.getElementById('last-updated');
+                if (updateIndicator) {
+                    updateIndicator.textContent = `Last updated: ${dateString} ${timeString}`;
+                }
+            }
+
+            updateAISection(articles) {
+                const container = document.getElementById('ai-articles');
+                if (!container) return;
+
+                container.innerHTML = articles.map(article => `
+                    <div class="border-l-4 border-brand-accent pl-4 py-2">
+                        <h4 class="font-bold text-brand-dark">${article.title.substring(0, 50)}...</h4>
+                        <p class="text-sm text-gray-500">${article.description ? article.description.substring(0, 80) + '...' : 'Latest AI development'}</p>
+                        <a href="${article.link}" target="_blank" class="text-brand-accent hover:underline text-sm">Read more →</a>
+                    </div>
+                `).join('');
+            }
+
+            updateVideoSection(video) {
+                const container = document.getElementById('tech-video');
+                if (!container) return;
+
+                container.innerHTML = `
+                    <iframe 
+                        src="${video.url}" 
+                        title="${video.title}" 
+                        class="w-full h-full"
+                        allowfullscreen>
+                    </iframe>
+                `;
+                
+                const title = document.getElementById('video-title');
+                if (title) title.textContent = video.title;
+                
+                const desc = document.getElementById('video-description');
+                if (desc) desc.textContent = video.description;
+            }
+
+            updateArticlesSection(articles) {
+                const container = document.getElementById('tech-articles-list');
+                if (!container) return;
+
+                container.innerHTML = articles.map(article => `
+                    <div class="group">
+                        <div class="w-full h-32 bg-gradient-to-r from-brand-dark to-brand-light rounded-xl mb-3 flex items-center justify-center text-white font-bold text-lg group-hover:scale-105 transition-transform">
+                            <i class="fa-solid ${article.image} text-3xl"></i>
+                        </div>
+                        <h4 class="font-bold text-brand-dark mb-2">${article.title}</h4>
+                        <p class="text-sm text-gray-500 mb-3">${article.description}</p>
+                        <a href="${article.url}" target="_blank" class="text-brand-accent hover:underline">Read article →</a>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new TechInsightsManager();
+        });
+    </script>
 </body>
 </html>
