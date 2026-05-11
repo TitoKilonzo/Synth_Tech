@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <p class="text-gray-400 leading-relaxed mb-8 max-w-sm">Empowering businesses across East Africa with next-generation ICT solutions. From network infrastructure to intelligent software, we build the future of connectivity.</p>
                     <div class="flex space-x-4">
-                        <a href="https://wa.me/254700000000" target="_blank" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] hover:text-white transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                        <a href="https://wa.me/254741563880" target="_blank" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] hover:text-white transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-whatsapp text-lg"></i></a>
                         <a href="https://x.com/synthlinktech" target="_blank" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-x-twitter text-lg"></i></a>
                         <a href="https://linkedin.com/company/synthlinktech" target="_blank" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#0077b5] hover:border-[#0077b5] hover:text-white transition-all duration-300 hover:-translate-y-1"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
                     </div>
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-6 text-lg">Contact Info</h4>
-                    <ul class="space-y-4 text-sm"><li class="flex items-start gap-3"><div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-brand-accent mt-0.5"><i class="fa-solid fa-location-dot"></i></div><div class="text-gray-400"><span class="block text-white font-medium">Address</span>Nairobi, Kenya</div></li><li class="flex items-start gap-3"><div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-brand-accent mt-0.5"><i class="fa-solid fa-envelope"></i></div><div class="text-gray-400"><span class="block text-white font-medium">Email</span>info@synthlink.tech</div></li></ul>
+                    <ul class="space-y-4 text-sm"><li class="flex items-start gap-3"><div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-brand-accent mt-0.5"><i class="fa-solid fa-location-dot"></i></div><div class="text-gray-400"><span class="block text-white font-medium">Address</span>Nairobi, Kenya</div></li><li class="flex items-start gap-3"><div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-brand-accent mt-0.5"><i class="fa-solid fa-envelope"></i></div><div class="text-gray-400"><span class="block text-white font-medium">Email</span>info@synthlinktech.com</div></li></ul>
                 </div>
             </div>
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500"><p>&copy; 2026 SynthLink Technologies. All rights reserved.</p></div>
