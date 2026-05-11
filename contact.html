@@ -8,6 +8,17 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>tailwind.config = { theme: { extend: { colors: { brand: { dark: '#05192D', light: '#0E2A47', accent: '#2EF2A4', } } } } }</script>
+    
+    <!-- EmailJS Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "YOUR_PUBLIC_KEY_HERE", // Replace with your EmailJS public key
+            });
+        })();
+    </script>
+    <script>tailwind.config = { theme: { extend: { colors: { brand: { dark: '#05192D', light: '#0E2A47', accent: '#2EF2A4', } } } } }</script>
     <style>
         .pulse-icon { position: relative; }
         .pulse-icon::before, .pulse-icon::after { content: ''; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; border-radius: 50%; border: 2px solid #2EF2A4; opacity: 0; z-index: -1; } 
@@ -84,40 +95,45 @@
             <div class="md:col-span-3 p-10 lg:p-12 bg-white">
                 <h3 class="text-2xl font-bold text-brand-dark mb-8">Send a Message</h3>
                 
-                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Message Sent (Demo)');">
+                <form id="contact-form" class="space-y-6">
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">First Name</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all">
+                            <input type="text" name="first_name" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all" required>
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Last Name</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all">
+                            <input type="text" name="last_name" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all" required>
                         </div>
                     </div>
                     
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
-                        <input type="email" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all">
+                        <input type="email" name="email" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all" required>
                     </div>
                     
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2">Subject</label>
-                        <select class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all cursor-pointer">
+                        <select name="subject" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all cursor-pointer" required>
+                            <option value="">Select a subject</option>
                             <option>General Inquiry</option>
                             <option>Request a Quote</option>
                             <option>Technical Support</option>
+                            <option>Partnership Opportunity</option>
                         </select>
                     </div>
                     
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-2">Message</label>
-                        <textarea rows="4" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all resize-none"></textarea>
+                        <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-brand-accent/50 focus:border-brand-accent outline-none transition-all resize-none" required></textarea>
                     </div>
                     
-                    <button type="submit" class="w-full bg-brand-dark text-white py-4 rounded-xl font-bold hover:bg-brand-light hover:shadow-lg hover:shadow-brand-accent/20 transition-all duration-300 transform hover:-translate-y-1">
-                        Send Message
+                    <button type="submit" id="submit-btn" class="w-full bg-brand-dark text-white py-4 rounded-xl font-bold hover:bg-brand-light hover:shadow-lg hover:shadow-brand-accent/20 transition-all duration-300 transform hover:-translate-y-1">
+                        <span id="btn-text">Send Message</span>
+                        <div id="loading-spinner" class="hidden inline-block ml-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                     </button>
+                    
+                    <div id="form-message" class="text-center text-sm"></div>
                 </form>
             </div>
         </div>
@@ -419,7 +435,73 @@
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new TechInsightsManager();
+            
+            // Initialize EmailJS form handling
+            initEmailJS();
         });
+
+        function initEmailJS() {
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const messageDiv = document.getElementById('form-message');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                btnText.textContent = 'Sending...';
+                loadingSpinner.classList.remove('hidden');
+                messageDiv.textContent = '';
+                
+                // Prepare template parameters
+                const templateParams = {
+                    from_name: `${form.first_name.value} ${form.last_name.value}`,
+                    from_email: form.email.value,
+                    subject: form.subject.value,
+                    message: form.message.value,
+                    to_email: 'info@synthlinktech.com',
+                    reply_to: form.email.value
+                };
+
+                // Send email using EmailJS
+                emailjs.send(
+                    'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+                    'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+                    templateParams
+                )
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    messageDiv.innerHTML = '<span class="text-green-600 font-bold">✓ Message sent successfully! We\'ll get back to you soon.</span>';
+                    form.reset();
+                    
+                    // Reset button
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Send Message';
+                    loadingSpinner.classList.add('hidden');
+                    
+                    // Clear success message after 5 seconds
+                    setTimeout(() => {
+                        messageDiv.textContent = '';
+                    }, 5000);
+                    
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    messageDiv.innerHTML = '<span class="text-red-600 font-bold">✗ Failed to send message. Please try again or contact us directly.</span>';
+                    
+                    // Reset button
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Send Message';
+                    loadingSpinner.classList.add('hidden');
+                });
+            });
+        }
     </script>
 </body>
 </html>

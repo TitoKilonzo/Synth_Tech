@@ -47,6 +47,66 @@ SynthLinkSite/
 | Tailwind CSS (CDN) | Styling and layout |
 | Vanilla JavaScript | Animations and component injection |
 | Alpine.js *(optional)* | Reactive UI interactions |
+| EmailJS | Contact form email delivery |
+
+---
+
+## 📧 EmailJS Setup (Required for Contact Form)
+
+The contact form uses **EmailJS** to send emails directly from the frontend. To make the contact form functional:
+
+### 1. Create EmailJS Account
+- Visit [https://www.emailjs.com/](https://www.emailjs.com/)
+- Sign up for a free account
+
+### 2. Set Up Email Service
+- Go to **Email Services** → **Add New Service**
+- Choose your email provider (Gmail, Outlook, etc.)
+- Connect your email account and verify
+
+### 3. Create Email Template
+- Go to **Email Templates** → **Create New Template**
+- Use this template structure:
+
+```
+Subject: {{subject}} - Message from {{from_name}}
+
+From: {{from_name}} ({{from_email}})
+
+Message:
+{{message}}
+
+---
+This message was sent from the SynthLink Technologies website contact form.
+```
+
+### 4. Configure contact.html
+Replace the placeholder values in `contact.html`:
+
+```javascript
+emailjs.init({
+    publicKey: "YOUR_PUBLIC_KEY_HERE", // Your EmailJS public key
+});
+
+// In the send function:
+emailjs.send(
+    'YOUR_SERVICE_ID', // Your EmailJS service ID
+    'YOUR_TEMPLATE_ID', // Your EmailJS template ID
+    templateParams
+)
+```
+
+### 5. Get Your Keys
+- **Public Key**: Dashboard → Account → General → Public Key
+- **Service ID**: Email Services → [Your Service] → Service ID
+- **Template ID**: Email Templates → [Your Template] → Template ID
+
+### 6. Test the Form
+- Fill out the contact form on your deployed site
+- Check your email for the test message
+- Verify replies go to the sender's email
+
+**Note**: EmailJS free tier allows 200 emails/month. Upgrade for higher limits if needed.
 
 ---
 
