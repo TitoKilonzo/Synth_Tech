@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-2 group cursor-pointer">
-                    <a href="index.html" class="flex items-center gap-2">
+                    <a href="/" class="flex items-center gap-2">
                         <div class="w-10 h-10 bg-brand-dark rounded-lg flex items-center justify-center text-brand-accent shadow-lg shadow-brand-accent/20 group-hover:scale-105 transition-transform duration-300">
                             <i class="fa-solid fa-layer-group text-xl"></i>
                         </div>
@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link text-brand-dark font-bold border-b-2 border-brand-accent px-1 pt-1">Home</a>
-                    <a href="about.html" class="nav-link text-gray-600 hover:text-brand-dark hover:border-brand-accent/50 border-b-2 border-transparent px-1 pt-1 transition-all duration-300">About</a>
-                    <a href="services.html" class="nav-link text-gray-600 hover:text-brand-dark hover:border-brand-accent/50 border-b-2 border-transparent px-1 pt-1 transition-all duration-300">Services</a>
-                    <a href="contact.html" class="nav-link text-gray-600 hover:text-brand-dark hover:border-brand-accent/50 border-b-2 border-transparent px-1 pt-1 transition-all duration-300">Contact</a>
+                    <a href="/" class="nav-link text-brand-dark font-bold border-b-2 border-brand-accent px-1 pt-1">Home</a>
+                    <a href="about" class="nav-link text-gray-600 hover:text-brand-dark hover:border-brand-accent/50 border-b-2 border-transparent px-1 pt-1 transition-all duration-300">About</a>
+                    <a href="services" class="nav-link text-gray-600 hover:text-brand-dark hover:border-brand-accent/50 border-b-2 border-transparent px-1 pt-1 transition-all duration-300">Services</a>
+                    <a href="contact" class="nav-link text-gray-600 hover:text-brand-dark hover:border-brand-accent/50 border-b-2 border-transparent px-1 pt-1 transition-all duration-300">Contact</a>
                 </div>
 
                 <!-- CTA Button -->
                 <div class="hidden md:block">
-                    <a href="contact.html" class="bg-brand-dark text-white px-6 py-2.5 rounded-full font-medium hover:bg-brand-light hover:shadow-lg hover:shadow-brand-accent/20 transition-all duration-300 transform hover:-translate-y-0.5">
+                    <a href="contact" class="bg-brand-dark text-white px-6 py-2.5 rounded-full font-medium hover:bg-brand-light hover:shadow-lg hover:shadow-brand-accent/20 transition-all duration-300 transform hover:-translate-y-0.5">
                         Get Started
                     </a>
                 </div>
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Mobile Menu Dropdown -->
         <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 absolute w-full shadow-xl">
             <div class="px-4 pt-2 pb-6 space-y-1">
-                <a href="index.html" class="block px-4 py-3 text-base font-medium text-brand-accent bg-brand-dark/5 rounded-md">Home</a>
-                <a href="about.html" class="block px-4 py-3 text-base font-medium text-gray-600 hover:text-brand-dark hover:bg-gray-50 rounded-md">About</a>
-                <a href="services.html" class="block px-4 py-3 text-base font-medium text-gray-600 hover:text-brand-dark hover:bg-gray-50 rounded-md">Services</a>
-                <a href="contact.html" class="block px-4 py-3 text-base font-medium text-gray-600 hover:text-brand-dark hover:bg-gray-50 rounded-md">Contact</a>
+                <a href="/" class="block px-4 py-3 text-base font-medium text-brand-accent bg-brand-dark/5 rounded-md">Home</a>
+                <a href="about" class="block px-4 py-3 text-base font-medium text-gray-600 hover:text-brand-dark hover:bg-gray-50 rounded-md">About</a>
+                <a href="services" class="block px-4 py-3 text-base font-medium text-gray-600 hover:text-brand-dark hover:bg-gray-50 rounded-md">Services</a>
+                <a href="contact" class="block px-4 py-3 text-base font-medium text-gray-600 hover:text-brand-dark hover:bg-gray-50 rounded-md">Contact</a>
             </div>
         </div>
     </nav>
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-6 text-lg">Company</h4>
-                    <ul class="space-y-4"><li><a href="about.html" class="hover:text-brand-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs opacity-50"></i> About Us</a></li><li><a href="services.html" class="hover:text-brand-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs opacity-50"></i> Services</a></li><li><a href="contact.html" class="hover:text-brand-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs opacity-50"></i> Contact</a></li></ul>
+                    <ul class="space-y-4"><li><a href="about" class="hover:text-brand-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs opacity-50"></i> About Us</a></li><li><a href="services" class="hover:text-brand-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs opacity-50"></i> Services</a></li><li><a href="contact" class="hover:text-brand-accent transition-colors flex items-center gap-2"><i class="fa-solid fa-chevron-right text-xs opacity-50"></i> Contact</a></li></ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-6 text-lg">Contact Info</h4>
